@@ -1,4 +1,5 @@
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static org.assertj.core.api.Assertions.*
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
@@ -17,10 +18,9 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-response = WS.sendRequest(findTestObject('API Method/Login/post_login_failed'))
+response = WS.sendRequest(findTestObject('API Method/User/detele_user'))
 
-WS.verifyResponseStatusCode(response, 400)
 
-assertThat(response.getStatusCode()).isEqualTo(400)
+WS.verifyResponseStatusCode(response, 204)
 
-WS.verifyElementPropertyValue(response, 'error', "Missing password")
+assertThat(response.getStatusCode()).isEqualTo(204)

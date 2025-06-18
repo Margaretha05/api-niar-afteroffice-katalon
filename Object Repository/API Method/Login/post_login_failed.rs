@@ -64,6 +64,7 @@ ResponseObject response = WSResponseManager.getInstance().getCurrentResponse()
 
 WS.verifyResponseStatusCode(response, 400)
 
-assertThat(response.getStatusCode()).isEqualTo(400)</verificationScript>
+assertThat(response.getStatusCode()).isEqualTo(400)
+WS.verifyElementPropertyValue(response, 'error', &quot;Missing password&quot;)</verificationScript>
    <wsdlAddress></wsdlAddress>
 </WebServiceRequestEntity>

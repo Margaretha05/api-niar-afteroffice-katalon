@@ -1,4 +1,5 @@
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static org.assertj.core.api.Assertions.*
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
@@ -17,5 +18,8 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WS.sendRequestAndVerify(findTestObject('API Method/User/get_single_user_not_found'))
+response = WS.sendRequest(findTestObject('API Method/User/get_single_user_not_found'))
 
+WS.verifyResponseStatusCode(response, 404)
+
+assertThat(response.getStatusCode()).isEqualTo(404)
